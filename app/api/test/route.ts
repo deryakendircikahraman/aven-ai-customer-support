@@ -51,7 +51,7 @@ export async function POST(req: NextRequest) {
 
         // Calculate scores
         const accuracy = calculateAccuracy(actualAnswer, question.expectedAnswer);
-        const helpfulness = calculateHelpfulness(actualAnswer, question.question);
+        const helpfulness = calculateHelpfulness(actualAnswer);
         const citationQuality = calculateCitationQuality(actualAnswer);
         const overallScore = calculateOverallScore(accuracy, helpfulness, citationQuality);
         const feedback = generateFeedback(accuracy, helpfulness, citationQuality);

@@ -1,13 +1,28 @@
 import { Pinecone } from '@pinecone-database/pinecone';
 
-const pinecone = new Pinecone({
-  apiKey: process.env.PINECONE_API_KEY!,
-});
+let pinecone: Pinecone | null = null;
+let index: any = null;
 
-const index = pinecone.index(process.env.PINECONE_INDEX!);
+function getPineconeClient() {
+  if (!pinecone) {
+    pinecone = new Pinecone({
+      apiKey: process.env.PINECONE_API_KEY!,
+    });
+  }
+  return pinecone;
+}
+
+function getIndex() {
+  if (!index) {
+    const client = getPineconeClient();
+    index = client.index(process.env.PINECONE_INDEX!);
+  }
+  return index;
+}
 
 export async function getMatchesFromPinecone(embedding: number[]) {
-  const result = await index.query({
+  const pineconeIndex = getIndex();
+  const result = await pineconeIndex.query({
     vector: embedding,
     topK: 5,
     includeMetadata: true,

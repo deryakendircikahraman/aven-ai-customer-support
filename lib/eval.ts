@@ -990,7 +990,7 @@ function getAnswerTone(text: string): string {
   return 'neutral';
 }
 
-export function calculateHelpfulness(actualAnswer: string, _question: string): number {
+export function calculateHelpfulness(actualAnswer: string): number {
   const answer = actualAnswer.toLowerCase();
   
   // Check if answer is not empty and relevant

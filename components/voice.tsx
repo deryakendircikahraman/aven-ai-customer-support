@@ -91,7 +91,7 @@ export function VoiceChat() {
           Voice Chat
         </h3>
         <p className="text-gray-600 text-sm">
-          Click the button to start a voice conversation
+          Click the button to start a voice conversation with Aven support
         </p>
       </div>
 

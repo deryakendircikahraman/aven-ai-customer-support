@@ -2,7 +2,8 @@ import { Pinecone } from '@pinecone-database/pinecone';
 
 // Lazy-loaded Pinecone client to avoid build-time initialization
 let pinecone: Pinecone | null = null;
-let index: ReturnType<Pinecone['index']> | null = null;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+let index: any = null;
 
 function getPineconeClient() {
   if (!pinecone) {

@@ -1,240 +1,192 @@
-# Aven AI Support Assistant
+# Aven Support Assistant
 
-A comprehensive AI-powered customer support system for Aven financial services, featuring text and voice chat capabilities, intelligent meeting scheduling, and advanced safety guardrails.
+Customer support system for Aven. Has chat, voice, and meeting scheduling features.
 
-## 🎯 Project Requirements - All Completed ✅
+## Features
 
-### Core Requirements
-- ✅ **Scalable Data Ingestion Pipeline**: Pinecone vector database with OpenAI embeddings
-- ✅ **Web App with Text & Voice Chat**: Full-featured chat interface with Vapi AI integration
-- ✅ **Evaluation Framework**: 50+ realistic questions with accuracy, helpfulness, and citation scoring
-- ✅ **Guardrails Implementation**: Personal data, legal/financial advice, toxicity, and misuse detection
-- ✅ **Meeting Scheduling Tool Calls**: Intelligent meeting detection and booking system
+### Chat System
+- Text chat with smart responses
+- Voice chat using Vapi AI
+- Meeting scheduling detection
 
-## 🚀 Features
+### Evaluation System
+- Tests system with 100+ questions
+- Shows accuracy and performance metrics
+- Category breakdown (product, technical, billing, etc.)
 
-### 🤖 AI-Powered Support
-- **Text Chat**: Natural language conversations with context-aware responses
-- **Voice Chat**: Real-time voice interactions with transcription and response
-- **RAG System**: Retrieval-Augmented Generation using Pinecone vector database
-- **Smart Responses**: Contextual answers based on comprehensive knowledge base
+### Meeting Scheduling
+- Detects meeting requests automatically
+- Shows available time slots
+- Supports different meeting types (support, demo, consultation)
 
-### 📅 Meeting Scheduling
-- **Intelligent Detection**: Automatically detects meeting requests in conversations
-- **Available Slots**: Real-time availability checking for next 2 weeks
-- **Meeting Types**: Support calls, product demos, consultations, technical discussions
-- **Professional UI**: Clean scheduling modal with form validation
-
-### 🛡️ Safety & Guardrails
-- **Personal Data Protection**: Detects and blocks SSN, credit cards, emails, etc.
-- **Legal/Financial Advice**: Prevents inappropriate advice and refers to professionals
-- **Toxicity Detection**: Filters inappropriate content and misuse
-- **Content Sanitization**: Automatically masks sensitive information
-
-### 📊 Evaluation System
-- **50+ Test Questions**: Realistic scenarios across product, technical, billing, account, and general categories
-- **Multi-Metric Scoring**: Accuracy, helpfulness, and citation quality assessment
-- **Performance Dashboard**: Visual evaluation results with detailed breakdowns
-- **Export Capabilities**: CSV export for analysis and reporting
-
-### 🎨 Professional UI/UX
-- **Modern Design**: Clean, professional interface with smooth animations
-- **Responsive Layout**: Works perfectly on desktop and mobile devices
-- **Accessibility**: Proper ARIA labels and keyboard navigation
-- **Dark/Light Mode**: Theme support with system preference detection
-
-## 🛠️ Technology Stack
+## Tech Stack
 
 ### Frontend
-- **Next.js 15.4.2**: React framework with App Router
-- **TypeScript**: Type-safe development
-- **Tailwind CSS**: Utility-first styling
-- **Radix UI**: Accessible component primitives
-- **Lucide React**: Beautiful icons
+- Next.js 15
+- TypeScript
+- Tailwind CSS
+- Lucide React icons
 
-### AI & Backend
-- **OpenAI API**: GPT-3.5-turbo for responses, text-embedding-3-small for vectors
-- **Pinecone**: Vector database for semantic search
-- **Vapi AI**: Voice chat integration
-- **Axios**: HTTP client for API calls
+### Backend
+- OpenAI API (GPT-3.5-turbo)
+- Pinecone vector database
+- Vapi AI for voice
+- Axios for API calls
 
-### Development
-- **ESLint**: Code quality and consistency
-- **PostCSS**: CSS processing
-- **pnpm**: Fast, efficient package management
+## Quick Start
 
-## 📦 Installation
+## Setup
 
-### Prerequisites
-- Node.js 18+ 
-- pnpm (recommended) or npm
-- OpenAI API key
-- Pinecone API key and index
-- Vapi AI API key (for voice chat)
-
-### Setup
-
-1. **Clone the repository**
+1. Clone the repo
    ```bash
-   git clone <repository-url>
+   git clone <repo-url>
    cd aven-support
    ```
 
-2. **Install dependencies**
+2. Install dependencies
    ```bash
    pnpm install
    ```
 
-3. **Environment Configuration**
-   Create a `.env.local` file:
+3. Create `.env.local` file:
    ```env
-   OPENAI_API_KEY=your_openai_api_key
-   PINECONE_API_KEY=your_pinecone_api_key
-   PINECONE_INDEX=your_pinecone_index_name
-   VAPI_API_KEY=your_vapi_api_key
-   VAPI_ASSISTANT_ID=your_vapi_assistant_id
+   OPENAI_API_KEY=your_key_here
+   PINECONE_API_KEY=your_key_here
+   PINECONE_INDEX=your_index_name
+   PINECONE_ENV=your_environment
+   PINECONE_REGION=your_region
+   VAPI_API_KEY=your_vapi_key
+   VAPI_ASSISTANT_ID=your_assistant_id
    ```
 
-4. **Run development server**
+4. Run dev server
    ```bash
    pnpm dev
    ```
 
-5. **Open your browser**
-   Navigate to [http://localhost:3000](http://localhost:3000)
-
-## 🎮 Usage
+## Usage
 
 ### Text Chat
-1. Navigate to the "Text Chat" tab
-2. Type your question about Aven services
-3. Receive instant AI-powered responses
-4. Try meeting requests like "I need to schedule a demo"
+- Go to "Text Chat" tab
+- Type your question
+- Get instant responses
+- Try asking for meetings
 
 ### Voice Chat
-1. Navigate to the "Voice Chat" tab
-2. Click the microphone button to start
-3. Speak naturally and receive voice responses
-4. Click the button again to stop
-
-### Meeting Scheduling
-1. In text chat, request a meeting: "I need to talk with a team member"
-2. AI will detect the request and show available slots
-3. Fill out the scheduling form
-4. Receive confirmation with meeting details
+- Click "Voice Chat" tab
+- Press the button to start
+- Speak naturally
+- Get voice responses
 
 ### Evaluation System
-1. Navigate to the "AI Evaluation" tab
-2. Select questions or run all 50+ tests
-3. View detailed performance metrics
-4. Export results for analysis
+- Go to "Evaluation" tab
+- Click "Run Evaluation"
+- View performance metrics
+- Check detailed results
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 aven-support/
-├── app/                    # Next.js App Router
+├── app/                    # Next.js app router
 │   ├── api/               # API routes
-│   │   ├── query/         # Main chat endpoint
-│   │   ├── evaluate/      # Evaluation system
+│   │   ├── chat/          # Chat endpoints
+│   │   ├── test/          # Evaluation system
 │   │   └── meetings/      # Meeting scheduling
-│   ├── globals.css        # Global styles
 │   ├── layout.tsx         # Root layout
 │   └── page.tsx           # Main page
 ├── components/            # React components
 │   ├── chat.tsx          # Text chat interface
-│   ├── voice-chat.tsx    # Voice chat interface
-│   ├── meeting-scheduler.tsx # Meeting booking modal
-│   ├── evaluation-dashboard.tsx # Evaluation interface
-│   └── ui/               # Reusable UI components
-├── lib/                  # Core functionality
-│   ├── rag.ts           # RAG system implementation
-│   ├── pinecone.ts      # Vector database operations
-│   ├── guardrails.ts    # Safety filters
-│   ├── evaluation.ts    # Evaluation framework
-│   └── meeting-scheduler.ts # Meeting system
-├── public/              # Static assets
-└── styles/              # Additional styles
+│   ├── voice.tsx         # Voice chat interface
+│   ├── dashboard.tsx     # Evaluation dashboard
+│   └── ui/               # UI components
+├── lib/                  # Core logic
+│   ├── rag.ts           # RAG system
+│   ├── db.ts            # Database operations
+│   ├── scheduler.ts     # Meeting scheduling
+│   ├── eval.ts          # Evaluation logic
+│   └── types.ts         # TypeScript types
+└── public/              # Static files
+
+data-scraper/
+├── embed_documents.py   # Document embedding
+├── query_documents.py   # Query testing
+├── data/               # Knowledge base
+└── requirements.txt    # Python dependencies
 ```
 
-## 🔧 API Endpoints
+## API Endpoints
 
-### `/api/query` (POST)
-Main chat endpoint that processes user questions and returns AI responses.
+### Chat
+- `POST /api/chat/query` - Process chat messages
 
-### `/api/evaluate` (GET/POST)
-Evaluation system for testing AI performance with 50+ questions.
+### Evaluation
+- `POST /api/test` - Run evaluation tests
 
-### `/api/meetings` (GET/POST)
-Meeting scheduling system with detection, booking, and management.
+### Meetings
+- `POST /api/meetings/schedule` - Schedule meetings
+- `GET /api/meetings/slots` - Get available slots
 
-## 🧪 Testing
+## Configuration
 
-### Manual Testing
-- Text chat functionality
-- Voice chat with microphone
-- Meeting scheduling flow
-- Evaluation system
-- Guardrail triggers
+### Environment Variables
+- `OPENAI_API_KEY` - OpenAI API key for GPT responses
+- `PINECONE_API_KEY` - Pinecone API key for vector database
+- `PINECONE_INDEX` - Pinecone index name
+- `PINECONE_ENV` - Pinecone environment
+- `PINECONE_REGION` - Pinecone region
+- `VAPI_API_KEY` - Vapi AI key for voice chat
+- `VAPI_ASSISTANT_ID` - Vapi assistant ID
 
-### Automated Testing
-```bash
-# Run linting
-pnpm lint
+### Customization
+- Modify `lib/eval.ts` to add more evaluation questions
+- Update `data-scraper/data/aven/` with new knowledge base content
+- Customize UI components in `components/` directory
 
-# Build for production
-pnpm build
-
-# Start production server
-pnpm start
-```
-
-## 🚀 Deployment
+## Deployment
 
 ### Vercel (Recommended)
 1. Connect your GitHub repository to Vercel
-2. Add environment variables in Vercel dashboard
-3. Deploy automatically on push to main branch
+2. Set environment variables in Vercel dashboard
+3. Deploy automatically on push
 
 ### Other Platforms
-- **Netlify**: Compatible with Next.js
-- **Railway**: Easy deployment with environment management
-- **Docker**: Containerized deployment available
+- **Netlify**: Configure build settings for Next.js
+- **Railway**: Use Railway's Node.js template
+- **Docker**: Use the provided Dockerfile
 
-## 🔒 Security
+## Development
 
-- Environment variables for sensitive API keys
-- Input sanitization and validation
-- Guardrails for inappropriate content
-- Personal data protection
-- Rate limiting on API endpoints
+### Adding New Features
+1. Create feature branch: `git checkout -b feature/new-feature`
+2. Implement changes following the existing patterns
+3. Test thoroughly using the evaluation system
+4. Submit pull request
 
-## 📈 Performance
+### Code Style
+- Use TypeScript for type safety
+- Follow existing naming conventions
+- Add TODO comments for future improvements
+- Keep components small and focused
 
-- Optimized Next.js configuration
-- Efficient vector search with Pinecone
-- Lazy loading of components
-- Image optimization
-- Minimal bundle size
-
-## 🤝 Contributing
+## Contributing
 
 1. Fork the repository
 2. Create a feature branch
 3. Make your changes
-4. Add tests if applicable
+4. Test with the evaluation system
 5. Submit a pull request
 
-## 📄 License
+## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+MIT License - see LICENSE file for details
 
-## 🆘 Support
+## Support
 
-For support and questions:
-- Create an issue in the GitHub repository
-- Contact the development team
+For questions or issues:
+- Create an issue in the repository
 - Check the documentation
+- Review the evaluation results for system performance
 
 ---
 

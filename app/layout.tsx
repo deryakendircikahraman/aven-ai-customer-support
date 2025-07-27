@@ -2,16 +2,51 @@ import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import { ThemeProvider } from '@/components/theme-provider'
+import { MessageSquare } from 'lucide-react'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Aven AI Support Assistant',
-  description: 'Intelligent customer support powered by AI for Aven financial services',
-  keywords: 'Aven, AI support, customer service, financial technology, credit lines',
+  title: 'Aven Support Assistant',
+  description: 'Intelligent customer support for Aven financial services',
+  keywords: 'Aven, support, customer service, financial technology, credit lines',
   authors: [{ name: 'Aven Team' }],
-  robots: 'index, follow',
-}
+  creator: 'Aven',
+  publisher: 'Aven',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  metadataBase: new URL('https://aven-support.vercel.app'),
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    title: 'Aven Support Assistant',
+    description: 'Get instant help with Aven financial services',
+    url: 'https://aven-support.vercel.app',
+    siteName: 'Aven Support',
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Aven Support Assistant',
+    description: 'Get instant help with Aven financial services',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+};
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -37,19 +72,17 @@ export default function RootLayout({
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center h-16">
                   <div className="flex items-center space-x-3">
-                    <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
-                      <span className="text-white font-bold text-sm">A</span>
+                    <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
+                      <MessageSquare className="w-4 h-4 text-white" />
                     </div>
                     <div>
-                      <h1 className="text-xl font-bold text-gray-900">Aven AI Support</h1>
-                      <p className="text-xs text-gray-500">Powered by Advanced AI</p>
+                      <h1 className="text-xl font-bold text-gray-900">Aven Support</h1>
+                      <p className="text-xs text-gray-500">Smart Assistant</p>
                     </div>
                   </div>
-                  <div className="flex items-center space-x-4">
-                    <div className="hidden sm:flex items-center space-x-2 text-sm text-gray-600">
-                      <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                      <span>AI Assistant Online</span>
-                    </div>
+                  <div className="flex items-center space-x-2 text-sm">
+                    <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                    <span>Assistant Online</span>
                   </div>
                 </div>
               </div>

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Button } from '@/components/ui/button';
+import { Button } from './ui/button';
 import { Play, BarChart3, CheckCircle, XCircle, AlertTriangle, Loader2, Filter, Download, RefreshCw } from 'lucide-react';
 import axios from 'axios';
 import { GuardrailResult } from '../lib/types';
@@ -11,6 +11,8 @@ interface EvaluationQuestion {
   question: string;
   category: string;
   difficulty: string;
+  expectedAnswer?: string;
+  requiresContext?: boolean;
 }
 
 interface EvaluationResult {
@@ -48,17 +50,31 @@ export function EvaluationDashboard() {
   const [selectedDifficulty, setSelectedDifficulty] = useState<string>('all');
   const [showFilters, setShowFilters] = useState(false);
 
+  console.log('EvaluationDashboard rendered, questions count:', questions.length);
+
   useEffect(() => {
+    console.log('useEffect triggered, loading questions...');
     loadQuestions();
   }, []);
 
   const loadQuestions = async () => {
     try {
       setIsLoadingQuestions(true);
+      console.log('Loading questions from API...');
       const response = await axios.get('/api/evaluate');
-      setQuestions(response.data.questions);
+      console.log('API Response:', response.data);
+      console.log('Questions count:', response.data.questions?.length || 0);
+      
+      if (response.data.questions && Array.isArray(response.data.questions)) {
+        setQuestions(response.data.questions);
+        console.log('Questions set successfully:', response.data.questions.length);
+      } else {
+        console.error('Invalid questions data:', response.data);
+        setQuestions([]);
+      }
     } catch (error) {
       console.error('Error loading questions:', error);
+      setQuestions([]);
     } finally {
       setIsLoadingQuestions(false);
     }
@@ -240,6 +256,7 @@ export function EvaluationDashboard() {
             <h2 className="text-lg font-semibold text-gray-900">Select Questions</h2>
             <p className="text-sm text-gray-600">
               {selectedQuestions.length} of {filteredQuestions.length} questions selected
+              {questions.length > 0 && ` (Total: ${questions.length})`}
             </p>
           </div>
         </div>
@@ -248,6 +265,18 @@ export function EvaluationDashboard() {
           <div className="flex items-center justify-center py-12">
             <Loader2 className="w-6 h-6 animate-spin text-blue-600" />
             <span className="ml-3 text-gray-600">Loading questions...</span>
+          </div>
+        ) : filteredQuestions.length === 0 ? (
+          <div className="flex flex-col items-center justify-center py-12">
+            <div className="text-gray-400 mb-4">
+              <BarChart3 className="w-12 h-12" />
+            </div>
+            <p className="text-gray-600 mb-2">No questions available</p>
+            <p className="text-sm text-gray-500 mb-4">Try refreshing or check the API connection</p>
+            <Button onClick={loadQuestions} variant="outline">
+              <RefreshCw className="w-4 h-4 mr-2" />
+              Reload Questions
+            </Button>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-h-96 overflow-y-auto">

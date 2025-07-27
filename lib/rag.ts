@@ -1,7 +1,7 @@
 import OpenAI from "openai";
 import { getMatchesFromPinecone } from "./db";
-import { detectMeetingRequest, generateMeetingResponse, findAvailableSlots } from "./scheduler";
-import { MeetingRequest, MeetingSlot } from "./scheduler";
+import { detectMeetingRequest, findAvailableSlots } from "./scheduler";
+import { MeetingSlot } from "./scheduler";
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY!,

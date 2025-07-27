@@ -42,10 +42,10 @@ export async function POST(req: NextRequest) {
         // Get AI response with timeout
         const response = await Promise.race([
           getAnswerFromRAG(question.question),
-          new Promise((_, reject) => 
+          new Promise<never>((_, reject) => 
             setTimeout(() => reject(new Error('Timeout')), 30000) // 30 second timeout
           )
-        ]) as any;
+        ]);
         
         const actualAnswer = response.answer;
 

@@ -127,7 +127,7 @@ export function Dashboard() {
             ></div>
           </div>
           <p className="text-xs text-gray-500 mt-2">
-            This may take a few minutes. Please don't navigate away from this page.
+            This may take a few minutes. Please don&apos;t navigate away from this page.
           </p>
         </div>
       )}

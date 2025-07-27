@@ -1,5 +1,6 @@
 import { Pinecone, Index } from '@pinecone-database/pinecone';
 
+// Lazy-loaded Pinecone client to avoid build-time initialization
 let pinecone: Pinecone | null = null;
 let index: Index | null = null;
 

@@ -12,7 +12,7 @@ export function VoiceChat() {
 
   useEffect(() => {
     // setup vapi
-    const vapi = new Vapi("9f59a2ab-092d-4676-93c4-a33ba97e8c6d");
+    const vapi = new Vapi(process.env.NEXT_PUBLIC_VAPI_API_KEY || "9f59a2ab-092d-4676-93c4-a33ba97e8c6d");
     vapiRef.current = vapi;
 
     // event handlers
@@ -49,9 +49,9 @@ export function VoiceChat() {
     setResponse("");
     setError("");
     
-    try {
-      vapiRef.current?.start("b546651f-c3c8-4697-982f-b850275256fa");
-    } catch {
+          try {
+        vapiRef.current?.start(process.env.NEXT_PUBLIC_VAPI_ASSISTANT_ID || "b546651f-c3c8-4697-982f-b850275256fa");
+      } catch {
       setError("Failed to start voice chat");
     }
   };

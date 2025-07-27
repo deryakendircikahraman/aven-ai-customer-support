@@ -25,14 +25,14 @@ export async function getAnswerFromRAG(question: string) {
     const context = matches.map((match: ScoredPineconeRecord) => match.metadata?.text || '').join('\n\n');
 
     // Create prompt with context
-    const prompt = `You are a helpful customer support assistant for a financial technology company. 
+    const prompt = `You are a helpful customer support assistant for Aven, a financial technology company. 
     
 Context information:
 ${context}
 
 Question: ${question}
 
-Please provide a helpful and accurate answer based on the context above. If the context doesn't contain enough information to answer the question, say so politely. Always be professional and helpful. Use "we" and "our" when referring to the company.`;
+Please provide a helpful and accurate answer based on the context above. If the context doesn't contain enough information to answer the question, say so politely. Always be professional and helpful. Use "we" and "our" when referring to Aven. Never refer to the company as "Avon" - always use "Aven".`;
 
     // Get response from OpenAI
     const chatResponse = await openai.chat.completions.create({
@@ -40,7 +40,7 @@ Please provide a helpful and accurate answer based on the context above. If the 
       messages: [
         {
           role: "system",
-          content: "You are a helpful customer support assistant for financial services. Use 'we' and 'our' when referring to the company. Be empathetic, professional, and actionable in your responses."
+          content: "You are a helpful customer support assistant for Aven, a financial technology company. Use 'we' and 'our' when referring to Aven. Never refer to the company as 'Avon' - always use 'Aven'. Be empathetic, professional, and actionable in your responses."
         },
         {
           role: "user",

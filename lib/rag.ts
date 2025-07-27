@@ -2,6 +2,7 @@ import OpenAI from "openai";
 import { getMatchesFromPinecone } from "./db";
 import { detectMeetingRequest, findAvailableSlots } from "./scheduler";
 import { MeetingSlot } from "./scheduler";
+import { ScoredPineconeRecord } from "@pinecone-database/pinecone";
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY!,
@@ -21,7 +22,7 @@ export async function getAnswerFromRAG(question: string) {
     const matches = await getMatchesFromPinecone(questionEmbedding);
 
     // Build context from matches
-    const context = matches.map(match => match.metadata?.text || '').join('\n\n');
+    const context = matches.map((match: ScoredPineconeRecord) => match.metadata?.text || '').join('\n\n');
 
     // Create prompt with context
     const prompt = `You are a helpful customer support assistant for a financial technology company. 

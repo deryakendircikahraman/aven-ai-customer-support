@@ -1,7 +1,7 @@
-import { Pinecone } from '@pinecone-database/pinecone';
+import { Pinecone, Index } from '@pinecone-database/pinecone';
 
 let pinecone: Pinecone | null = null;
-let index: any = null;
+let index: Index | null = null;
 
 function getPineconeClient() {
   if (!pinecone) {

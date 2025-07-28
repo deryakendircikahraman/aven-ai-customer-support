@@ -32,10 +32,14 @@ export function VoiceChat() {
 
     vapi.on("message", (msg: { transcript?: string; response?: string }) => {
       if (msg.transcript) {
-        setTranscript(msg.transcript);
+        // Fix any "Avon" mentions in the transcript
+        const correctedTranscript = msg.transcript.replace(/Avon/g, 'Aven');
+        setTranscript(correctedTranscript);
       }
       if (msg.response) {
-        setResponse(msg.response);
+        // Fix any "Avon" mentions in the response
+        const correctedResponse = msg.response.replace(/Avon/g, 'Aven');
+        setResponse(correctedResponse);
       }
     });
 

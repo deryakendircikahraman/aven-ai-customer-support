@@ -188,6 +188,3 @@ For questions or issues:
 - Check the documentation
 - Review the evaluation results for system performance
 
----
-
-**Built for Aven Financial Services**

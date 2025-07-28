@@ -13,6 +13,8 @@ Customer support system for Aven. Has chat, voice, and meeting scheduling featur
 
 <img width="1097" height="821" alt="Screenshot 2025-07-27 at 5 15 08 PM" src="https://github.com/user-attachments/assets/1c544773-24cf-4c5e-b72e-ff06d976b3f2" />
 
+<img width="1097" height="831" alt="image" src="https://github.com/user-attachments/assets/0656e73a-11e4-424f-b029-3a73e40ca92a" />
+
 
 ### Evaluation System
 - Tests system with 100+ questions

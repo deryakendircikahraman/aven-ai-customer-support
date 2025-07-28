@@ -9,15 +9,25 @@ Customer support system for Aven. Has chat, voice, and meeting scheduling featur
 - Voice chat using Vapi AI
 - Meeting scheduling detection
 
+<img width="1097" height="821" alt="Screenshot 2025-07-27 at 5 14 58 PM" src="https://github.com/user-attachments/assets/04076f9c-55de-42ea-96cf-f67886f9597a" />
+
+<img width="1097" height="821" alt="Screenshot 2025-07-27 at 5 15 08 PM" src="https://github.com/user-attachments/assets/1c544773-24cf-4c5e-b72e-ff06d976b3f2" />
+
+
 ### Evaluation System
 - Tests system with 100+ questions
 - Shows accuracy and performance metrics
 - Category breakdown (product, technical, billing, etc.)
 
+  <img width="1097" height="746" alt="Screenshot 2025-07-27 at 5 15 24 PM" src="https://github.com/user-attachments/assets/77948190-b667-4548-94bc-43d82b382c38" />
+
 ### Meeting Scheduling
 - Detects meeting requests automatically
 - Shows available time slots
 - Supports different meeting types (support, demo, consultation)
+
+<img width="1097" height="831" alt="image" src="https://github.com/user-attachments/assets/bb24a229-1b9e-43a0-9130-2031d7621124" />
+
 
 ## Tech Stack
 
